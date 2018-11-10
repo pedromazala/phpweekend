@@ -1,0 +1,17 @@
+docker build -t pedromazala/phpweekend:5.6-apache -f Dockerfile-56-apache .
+docker build -t pedromazala/phpweekend:7.0-apache -f Dockerfile-70-apache .
+docker build -t pedromazala/phpweekend:7.1-apache -f Dockerfile-71-apache .
+docker build -t pedromazala/phpweekend:7.2-apache -f Dockerfile-72-apache .
+docker build -t pedromazala/phpweekend:7.2-pdomysql-apache -f Dockerfile-72-pdomysql-apache .
+docker build -t pedromazala/phpweekend:7.2-pdomysql-fpm-info -f Dockerfile-72-pdomysql-fpm-info .
+docker build -t pedromazala/phpweekend:7.3-apache -f Dockerfile-73-apache .
+
+docker run -it -v $(pwd):/var/www/html -p 81:80 --rm pedromazala/phpweekend:5.6-apache
+docker run -it -v $(pwd):/var/www/html -p 82:80 --rm pedromazala/phpweekend:7.0-apache
+docker run -it -v $(pwd):/var/www/html -p 83:80 --rm pedromazala/phpweekend:7.1-apache
+docker run -it -v $(pwd):/var/www/html -p 84:80 --rm pedromazala/phpweekend:7.2-apache
+docker run -it -v $(pwd):/var/www/html -p 85:80 --rm pedromazala/phpweekend:7.2-pdomysql-apache
+docker run -it -v $(pwd):/var/www/html -p 86:80 --rm pedromazala/phpweekend:7.2-pdomysql-fpm-info
+docker run -it -v $(pwd):/var/www/html -p 87:80 --rm pedromazala/phpweekend:7.3-apache
+
+docker-compose up --build

@@ -1,0 +1,26 @@
+version: '3'
+services:
+    web:
+        image: nginx:alpine
+        volumes:
+            - "./default.conf:/etc/nginx/conf.d/default.conf"
+            - "./:/var/www/html"
+        ports:
+            - "90:80"
+    php:
+        build: 
+            context: .
+            dockerfile: Dockerfile-72-pdomysql-fpm-info
+        #image: pedromazala/phpweekend:7.2-pdomysql-fpm-info
+        #restart: always
+        volumes:
+            - "./:/var/www/html"
+#    mysql:
+#        image: mysql:5.7
+#        ports:
+#            - "3306:3306"
+#        environment:
+#            - MYSQL_ROOT_PASSWORD=root
+#            - MYSQL_DATABASE=phpweekend
+#        volumes:
+#            - ~/docker-data/mysql/data:/var/lib/mysql
